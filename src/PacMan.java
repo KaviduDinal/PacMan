@@ -96,5 +96,31 @@ public class PacMan extends JPanel {
         pacmanDownImage = new ImageIcon(getClass().getResource("/pacmanDown.png")).getImage();
         pacmanRightImage = new ImageIcon(getClass().getResource("/pacmanRight.png")).getImage();
     }
+    public void loadmap(){
+        walls =new HashSet<Block>();
+        foods =new HashSet<Block>();
+        ghosts =new HashSet<Block>();
+
+        for (int r=0; r< rowcount;r++) {
+            for(int c=0; c < coloumncount; c++){
+                String row = tileMap[r];
+                char tileChar = row.charAt(c);
+
+                int x = c*tileSize;
+                int y =r*tileSize;
+
+                if (tileChar == 'X'){
+                    //block wall
+                    Block wall =new Block(wallImage,x,y, tileSize,tileSize);
+                    walls.add(wall);
+                }
+
+    
+
+            }
+        }
+
+
+    }
 
 }
