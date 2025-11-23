@@ -95,6 +95,12 @@ public class PacMan extends JPanel {
         pacmanLeftImage = new ImageIcon(getClass().getResource("/pacmanLeft.png")).getImage();
         pacmanDownImage = new ImageIcon(getClass().getResource("/pacmanDown.png")).getImage();
         pacmanRightImage = new ImageIcon(getClass().getResource("/pacmanRight.png")).getImage();
+
+        loadmap();
+        System.out.println(walls.size());
+          System.out.println(foods.size());
+            System.out.println(ghosts.size());
+
     }
     public void loadmap(){
         walls =new HashSet<Block>();
@@ -104,16 +110,53 @@ public class PacMan extends JPanel {
         for (int r=0; r< rowcount;r++) {
             for(int c=0; c < coloumncount; c++){
                 String row = tileMap[r];
-                char tileChar = row.charAt(c);
+                char tileMapChar = row.charAt(c);
 
                 int x = c*tileSize;
                 int y =r*tileSize;
 
-                if (tileChar == 'X'){
+                if (tileMapChar == 'X'){
                     //block wall
                     Block wall =new Block(wallImage,x,y, tileSize,tileSize);
                     walls.add(wall);
                 }
+                else if(tileMapChar == 'b'){
+                    Block ghost =new Block(blueGhostImage, x, y, tileSize, tileSize);
+                    ghosts.add(ghost);
+                }
+                else if(tileMapChar == 'o'){
+                    Block ghost =new Block(orangeGhostImage, x, y, tileSize, tileSize);
+                    ghosts.add(ghost);
+                }
+                
+                else if(tileMapChar == 'p'){
+                    Block ghost =new Block(pinkGhostImage, x, y, tileSize, tileSize);
+                    ghosts.add(ghost);
+                }
+
+                else if(tileMapChar == 'r'){
+                    Block ghost =new Block(redGhostImage, x, y, tileSize, tileSize);
+                    ghosts.add(ghost);
+                }
+
+                else if(tileMapChar == 'p'){
+                    Block ghost =new Block(pacmanRightImage, x, y, tileSize, tileSize);
+                    ghosts.add(ghost);
+                }
+
+                else if(tileMapChar == 'p'){
+                    Block ghost =new Block(null,x+14,y+14,4,4);
+                    foods.add(ghost);
+                }
+
+
+
+
+
+                
+
+                
+
 
     
 
